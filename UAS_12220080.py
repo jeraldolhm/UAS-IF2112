@@ -80,7 +80,7 @@ datano4c=datano4c.sort_values(["name"],ascending=[1])
 datano4c=datano4c.loc[datano4c["produksi"]==0]
 datano4c[["name","kode_negara","region","sub-region"]]
 
-st.markdown('Informasi Kumulatif')
+st.markdown('Information on Accumulated Oil Production')
 
 #Most Accumulated Oil Producting Country on Year-T
 st.markdown('Most Accumulated Oil Producting Country on Year-T')
