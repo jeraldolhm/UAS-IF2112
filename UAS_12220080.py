@@ -1,3 +1,7 @@
+#UAS Pemrograman Komputer
+#IF2112
+#Jeraldo Letricio Halomoan Manulang
+#12220080
 
 import pandas as pd
 import streamlit as st
