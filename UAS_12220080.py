@@ -103,8 +103,8 @@ datano4e[["name","kode_negara","region","sub-region","produksi"]]
 '''
 ________________________________________________________________________
 '''
-#No.4f: Negara Produksi Nol Kumulatif
-st.markdown('Negara dengan jumlah produksi nol kumulatif')
+#No Accumulated Oil Producting Country on Year-T
+st.markdown('No Accumulated Oil Producting Country on Year-T')
 datano4f=datano4d.sort_values(["name"],ascending=[1])
 datano4f=datano4f.loc[datano4f["produksi"]==0]
 datano4f[["name","kode_negara","region","sub-region"]]
