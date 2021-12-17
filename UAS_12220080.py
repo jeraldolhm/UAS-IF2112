@@ -42,7 +42,7 @@ datano2graph=px.bar(datano2,x="name",y="produksi",title=str(str(selectbn)+" Top 
 st.plotly_chart(datano2graph)
 
 #PROBLEM III : Accumulated N-Countries Oil Production
-st.markdown('ccumulated N-Countries Oil Production')
+st.markdown('Accumulated N-Countries Oil Production')
 selectbn2=st.select_slider('Select Sum of Displayed Countries: ',options=selectorb, value=5, key="selectbn2")
 datano3=data.groupby(["name"])["produksi"].sum().reset_index()
 datano3=datano3.sort_values(["produksi"],ascending=[0])
