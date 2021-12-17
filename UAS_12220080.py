@@ -21,7 +21,7 @@ st.markdown('Jeraldo Letricio Halomoan Manulang')
 st.markdown('12220080')
 
 #PROBLEM I : Countries' Oil Production per Year
-st.markdown("Countries' Oil Production per Year")
+st.markdown('Countries Oil Production per Year')
 selectn=st.selectbox('Select Country: ',selectorn)
 datano1=data[data['name']==selectn]
 datano1graph=px.line(datano1,x="tahun",y="produksi",title=str("Produksi Minyak Negara "+selectn))
@@ -47,7 +47,7 @@ datano3graph=px.bar(datano3,x="name",y="produksi",title=str(str(selectbn2)+" Neg
 st.plotly_chart(datano3graph)
 
 #PROBLEM IV : Added Information of Countries' Oil Production
-st.markdown("Added Information of Countries' Oil Production")
+st.markdown('Added Information of Countries Oil Production')
 selectt2=st.select_slider('Select Year: ',selectort,key="selectt2")
 
 #Most Oil Producting Country on Year-T
@@ -60,7 +60,7 @@ datano4a[["name","kode_negara","region","sub-region","produksi"]]
 ________________________________________________________________________
 '''
 #Least Oil Producting Country on Year-T
-st.markdown('Negara dengan jumlah produksi terkecil')
+st.markdown('Least Oil Producting Country on Year-T')
 datano4b=data[data['tahun']==selectt2]
 datano4b=datano4b.sort_values(["produksi"],ascending=[1])
 datano4b=datano4b.loc[datano4b["produksi"]>0]
