@@ -28,7 +28,7 @@ st.markdown('12220080')
 st.markdown('Countries Oil Production per Year')
 selectn=st.selectbox('Select Country: ',selectorn)
 datano1=data[data['name']==selectn]
-datano1graph=px.line(datano1,x="tahun",y="produksi",title=str("Produksi Minyak Negara "+selectn))
+datano1graph=px.line(datano1,x="tahun",y="produksi",title=str("Oil Produced by "+selectn))
 st.plotly_chart(datano1graph)
 
 #PROBLEM II : Oil Production N-Countries in Year-T
@@ -38,7 +38,7 @@ selectbn=st.select_slider('Select Sum of Displayed Countries: ',options=selector
 datano2=data[data['tahun']==selectt]
 datano2=datano2.sort_values(["produksi"],ascending=[0])
 datano2=datano2[:selectbn]
-datano2graph=px.bar(datano2,x="name",y="produksi",title=str(str(selectbn)+" Negara Terbesar Produksi Minyak pada Tahun "+str(selectt)))
+datano2graph=px.bar(datano2,x="name",y="produksi",title=str(str(selectbn)+" Top Oil Producing Countries in "+str(selectt)))
 st.plotly_chart(datano2graph)
 
 #PROBLEM III : Accumulated N-Countries Oil Production
@@ -47,7 +47,7 @@ selectbn2=st.select_slider('Select Sum of Displayed Countries: ',options=selecto
 datano3=data.groupby(["name"])["produksi"].sum().reset_index()
 datano3=datano3.sort_values(["produksi"],ascending=[0])
 datano3=datano3[:selectbn2]
-datano3graph=px.bar(datano3,x="name",y="produksi",title=str(str(selectbn2)+" Negara Terbesar Produksi Minyak Kumulatif"))
+datano3graph=px.bar(datano3,x="name",y="produksi",title=str(str(selectbn2)+" Top Countries on Accumulated Oil-Produced"))
 st.plotly_chart(datano3graph)
 
 #PROBLEM IV : Added Information of Countries' Oil Production
