@@ -60,9 +60,7 @@ datano4a=data[data['tahun']==selectt2]
 datano4a=datano4a.sort_values(["produksi"],ascending=[0])
 datano4a=datano4a[:1]
 datano4a[["name","kode_negara","region","sub-region","produksi"]]
-'''
-________________________________________________________________________
-'''
+
 #Least Oil Producting Country on Year-T
 st.markdown('Least Oil Producting Country on Year-T')
 datano4b=data[data['tahun']==selectt2]
@@ -70,9 +68,7 @@ datano4b=datano4b.sort_values(["produksi"],ascending=[1])
 datano4b=datano4b.loc[datano4b["produksi"]>0]
 datano4b=datano4b[:1]
 datano4b[["name","kode_negara","region","sub-region","produksi"]]
-'''
-________________________________________________________________________
-'''
+
 #Zero Production Accumulated Country
 st.markdown('Zero Production Accumulated Country')
 datano4c=data[data['tahun']==selectt2]
@@ -91,18 +87,14 @@ datatemp.drop("produksi", axis=1, inplace=True)
 datano4d=pd.merge(datano4d,datatemp,on='name')
 datano4d=datano4d.drop_duplicates("name")
 datano4d[:1][["name","kode_negara","region","sub-region","produksi"]]
-'''
-________________________________________________________________________
-'''
+
 #Least Accumulated Oil Producting Country on Year-T
 st.markdown('Least Accumulated Oil Producting Country on Year-T')
 datano4e=datano4d.sort_values(["produksi"],ascending=[1])
 datano4e=datano4e.loc[datano4e["produksi"]>0]
 datano4e=datano4e[:1]
 datano4e[["name","kode_negara","region","sub-region","produksi"]]
-'''
-________________________________________________________________________
-'''
+
 #No Accumulated Oil Producting Country on Year-T
 st.markdown('No Accumulated Oil Producting Country on Year-T')
 datano4f=datano4d.sort_values(["name"],ascending=[1])
