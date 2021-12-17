@@ -14,54 +14,44 @@ selectorn=data['name'].drop_duplicates()
 selectort=data['tahun'].drop_duplicates()
 selectorb=[*range(1, 250, 1)]
 
-#judul
+# Heading
 st.title('Data Produksi Minyak Dunia')
 st.markdown('UAS IF2112 Pemrograman Komputer')
 st.markdown('Jeraldo Letricio Halomoan Manulang')
 st.markdown('12220080')
-'''
-________________________________________________________________________
-'''
-#No.1: Produksi Minyak Tiap Negara Per Tahun
-st.markdown('Produksi Minyak Tiap Negara per Tahun')
-selectn=st.selectbox('Pilih Negara: ',selectorn)
+
+#PROBLEM I : Countries' Oil Production per Year
+st.markdown('Countries' Oil Production per Yearn')
+selectn=st.selectbox('Select Country: ',selectorn)
 datano1=data[data['name']==selectn]
 datano1graph=px.line(datano1,x="tahun",y="produksi",title=str("Produksi Minyak Negara "+selectn))
 st.plotly_chart(datano1graph)
-'''
-________________________________________________________________________
-'''
-#No.2: Produksi Minyak n-besar pada Tahun x
-st.markdown('Produksi Minyak n-besar Negara per Tahun')
-selectt=st.selectbox('Pilih Tahun: ',selectort)
-selectbn=st.select_slider('Pilih Banyak Negara: ',options=selectorb, value=5)
+
+#PROBLEM II : Oil Production N-Countries in Year-T
+st.markdown('Oil Production N-Countries in T-Year')
+selectt=st.select_slider('Select Year: ',selectort)
+selectbn=st.select_slider('Select Sum of Displayed Countries: ',options=selectorb, value=5)
 datano2=data[data['tahun']==selectt]
 datano2=datano2.sort_values(["produksi"],ascending=[0])
 datano2=datano2[:selectbn]
 datano2graph=px.bar(datano2,x="name",y="produksi",title=str(str(selectbn)+" Negara Terbesar Produksi Minyak pada Tahun "+str(selectt)))
 st.plotly_chart(datano2graph)
-'''
-________________________________________________________________________
-'''
-#No. 3: Produksi Minyak n-besar Kumulatif
-st.markdown('Produksi Minyak n-besar Negara Kumulatif')
-selectbn2=st.select_slider('Pilih Banyak Negara: ',options=selectorb, value=5, key="selectbn2")
+
+#PROBLEM III : Accumulated N-Countries Oil Production
+st.markdown('ccumulated N-Countries Oil Production')
+selectbn2=st.select_slider('Select Sum of Displayed Countries: ',options=selectorb, value=5, key="selectbn2")
 datano3=data.groupby(["name"])["produksi"].sum().reset_index()
 datano3=datano3.sort_values(["produksi"],ascending=[0])
 datano3=datano3[:selectbn2]
 datano3graph=px.bar(datano3,x="name",y="produksi",title=str(str(selectbn2)+" Negara Terbesar Produksi Minyak Kumulatif"))
 st.plotly_chart(datano3graph)
-'''
-________________________________________________________________________
-'''
-#No. 4: Informasi per Tahun
-st.markdown('Informasi Berdasarkan Tahun')
-selectt2=st.selectbox('Pilih Tahun: ',selectort,key="selectt2")
-'''
-________________________________________________________________________
-'''
-#No.4a: Negara Produksi Terbesar di Tahun X
-st.markdown('Negara dengan jumlah produksi terbesar')
+
+#PROBLEM IV : Added Information of Countries' Oil Production
+st.markdown("Added Information of Countries' Oil Production")
+selectt2=st.select_slider('Select Year: ',selectort,key="selectt2")
+
+#Most Oil Producting Country on Year-T
+st.markdown('Biggest Producting Country on Year-T')
 datano4a=data[data['tahun']==selectt2]
 datano4a=datano4a.sort_values(["produksi"],ascending=[0])
 datano4a=datano4a[:1]
@@ -69,7 +59,7 @@ datano4a[["name","kode_negara","region","sub-region","produksi"]]
 '''
 ________________________________________________________________________
 '''
-#No.4b: Negara Produksi Terkecil di Tahun X
+#Least Oil Producting Country on Year-T
 st.markdown('Negara dengan jumlah produksi terkecil')
 datano4b=data[data['tahun']==selectt2]
 datano4b=datano4b.sort_values(["produksi"],ascending=[1])
@@ -79,20 +69,17 @@ datano4b[["name","kode_negara","region","sub-region","produksi"]]
 '''
 ________________________________________________________________________
 '''
-#No.4c: Negara Produksi Nol di Tahun X
-st.markdown('Negara dengan jumlah produksi nol')
+#Zero Production Accumulated Country
+st.markdown('Zero Production Accumulated Country')
 datano4c=data[data['tahun']==selectt2]
 datano4c=datano4c.sort_values(["name"],ascending=[1])
 datano4c=datano4c.loc[datano4c["produksi"]==0]
 datano4c[["name","kode_negara","region","sub-region"]]
-'''
-________________________________________________________________________
-'''
+
 st.markdown('Informasi Kumulatif')
-'''
-'''
-#No.4d: Negara Produksi Terbesar Kumulatif
-st.markdown('Negara dengan jumlah produksi terbesar kumulatif')
+
+#Most Accumulated Oil Producting Country on Year-T
+st.markdown('Most Accumulated Oil Producting Country on Year-T')
 datano4d=data.groupby(["name"])["produksi"].sum().reset_index()
 datano4d=datano4d.sort_values(["produksi"],ascending=[0])
 datatemp=data
@@ -103,8 +90,8 @@ datano4d[:1][["name","kode_negara","region","sub-region","produksi"]]
 '''
 ________________________________________________________________________
 '''
-#No.4e: Negara Produksi Terkecil Kumulatif
-st.markdown('Negara dengan jumlah produksi terkecil kumulatif')
+#Least Accumulated Oil Producting Country on Year-T
+st.markdown('Least Accumulated Oil Producting Country on Year-T')
 datano4e=datano4d.sort_values(["produksi"],ascending=[1])
 datano4e=datano4e.loc[datano4e["produksi"]>0]
 datano4e=datano4e[:1]
