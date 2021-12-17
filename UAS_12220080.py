@@ -21,7 +21,7 @@ st.markdown('Jeraldo Letricio Halomoan Manulang')
 st.markdown('12220080')
 
 #PROBLEM I : Countries' Oil Production per Year
-st.markdown('Countries' Oil Production per Yearn')
+st.markdown("Countries' Oil Production per Year")
 selectn=st.selectbox('Select Country: ',selectorn)
 datano1=data[data['name']==selectn]
 datano1graph=px.line(datano1,x="tahun",y="produksi",title=str("Produksi Minyak Negara "+selectn))
