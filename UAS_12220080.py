@@ -19,7 +19,7 @@ selectort=data['tahun'].drop_duplicates()
 selectorb=[*range(1, 250, 1)]
 
 # Heading
-st.title('Data Produksi Minyak Dunia')
+st.title('Big Data of Countries oil Production (1971-2015)')
 st.markdown('UAS IF2112 Pemrograman Komputer')
 st.markdown('Jeraldo Letricio Halomoan Manulang')
 st.markdown('12220080')
