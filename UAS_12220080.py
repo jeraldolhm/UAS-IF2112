@@ -11,7 +11,7 @@ data=pd.merge(datanegara,data,on='kode_negara')
 
 #selektor
 selectorn=data['name'].drop_duplicates()
-selectort=data['year'].drop_duplicates()
+selectort=data['tahun'].drop_duplicates()
 selectorb=[*range(1, 250, 1)]
 
 #judul
